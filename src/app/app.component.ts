@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
     <h1>
       Welcome to {{title}}!!
     </h1>
+    <router-outlet></router-outlet>
   `,
   styles: []
 })
