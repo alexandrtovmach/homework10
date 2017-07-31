@@ -29,13 +29,14 @@ export class MainService {
   }
 
   
-  checkValid(users, type, email, password) {
+  checkValid(users, type, email, password?) {
     let res = false;
     switch (type) {
       case 'email':
         users.forEach(function (elem) {
           if (elem.email == email) {
             res = true;
+            console.log('true')
           }
         });
         return res;
