@@ -8,8 +8,11 @@ export class MainService {
     switch (method) {
       case 'add':
         for (var key in obj) {
-          localStorage.setItem(key, obj[key]);
+          sessionStorage.setItem(key, obj[key]);
         };
+        var a = JSON.parse(localStorage.getItem('users'))
+        a.push(obj)
+        localStorage.setItem('users', JSON.stringify(a))
         return true;
       case 'get':
         if (localStorage.length) {

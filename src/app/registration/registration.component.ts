@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MainService } from '../main.service';
 
@@ -18,12 +18,17 @@ export class User{
 })
 
 
-export class RegistrationComponent {
+export class RegistrationComponent implements OnInit {
   user: User = new User();
   constructor(
     private mainService: MainService,
     private router: Router
   ){}
+  ngOnInit() {
+    if ((localStorage.length)&&(localStorage.email)) {
+      this.router.navigate(['/account']);
+    }
+  }
 
   addUser() {
     if (this.mainService.parseLocalStorage('add', this.user)) {
