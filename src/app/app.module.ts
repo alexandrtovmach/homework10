@@ -10,11 +10,13 @@ import { AccountComponent } from './account/account.component';
 import { TimerComponent } from './timer/timer.component';
 import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'registration', component: RegistrationComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'forgotpassword', component: ForgotpasswordComponent},
   {path: 'account', component: AccountComponent},
   {path: 'timer', component: TimerComponent},
   {path: '**', component: NotfoundComponent},
@@ -28,10 +30,11 @@ const appRoutes: Routes = [
     AccountComponent,
     TimerComponent,
     HomeComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    ForgotpasswordComponent
   ],
   imports: [
-    BrowserModule, RouterModule.forRoot(appRoutes), FormsModule
+    BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

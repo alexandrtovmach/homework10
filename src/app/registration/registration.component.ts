@@ -1,25 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { MainService } from '../main.service';
 
-@Component({
-  selector: 'app-registration',
-  templateUrl: 'registration.component.html',
-  styleUrls: ['registration.component.css']
-})
-export class RegistrationComponent implements OnInit {
+export class User{
   firstName: string;
   lastName: string;
   email: string;
   bornYear: number;
   password: string;
-  user = {
-    firstName: this.firstName,
-    lastName: this.lastName,
-    email: this.email,
-    bornYear: this.bornYear,
-    password: this.password
-  }
+}
 
-  ngOnInit() {
-  }
+@Component({
+  selector: 'app-registration',
+  templateUrl: 'registration.component.html',
+  styleUrls: ['registration.component.css'],
+  providers: [MainService]
+})
 
+
+export class RegistrationComponent {
+  user: User = new User();
+  constructor(
+    private mainService: MainService,
+    private router: Router
+  ){}
+
+  addUser() {
+    if (this.mainService.parseLocalStorage('add', this.user)) {
+      this.router.navigate(['/account']);
+    } else {
+      alert('Something wrong, we know about this and fix this immidiate\n\nBSA17 Support')
+    }
+  }
 }

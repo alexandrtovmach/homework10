@@ -1,6 +1,37 @@
-<input type="text" [ngModel]="firstName" placeholder="Mike">
-<input type="text" [ngModel]="lastName" placeholder="Shinoda">
-<input type="email" [ngModel]="email" required email placeholder="mikeshinoda@lptv.com">
-<input type="number" [ngModel]="bornYear" max="2000" required placeholder="1977">
-<input type="password" [ngModel]="password" required ng-minlength="3" placeholder="pa$$w0rD">
-
+<form> 
+    <div>
+        <label>First Name:</label>
+        <input name="firstName" [(ngModel)]="user.firstName" #firstName="ngModel" placeholder="Mike"/>
+    </div>
+    <div>
+        <label>Last Name:</label>
+        <input name="lastName" [(ngModel)]="user.lastName" #lastName="ngModel" placeholder="Shinoda"/>
+    </div>
+    <div>
+        <label>Email addres:</label>
+        <input type="email" name="email" [(ngModel)]="user.email" #email="ngModel" required pattern="[a-zA-Z_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}" placeholder="mikeshinoda@lptv.com"/>
+        <div [hidden]="email.valid || email.untouched" class="alert">
+          Incorrect email address
+        </div>
+    </div>
+    <div>
+        <label>Year of birth</label>
+        <input name="yearBirth" [(ngModel)]="user.yearBirth" #yearBirth="ngModel" required pattern="1+[0-9]{3}" placeholder="1977"/>
+        <div [hidden]="yearBirth.valid || yearBirth.untouched" class="alert">
+          Incorrect year
+        </div>
+    </div>
+    <div>
+        <label>Password</label>
+        <input type="password" name="password" [(ngModel)]="user.password" #password="ngModel" required pattern="[a-zA-Z0-9]{3,20}" placeholder="pa$$w0rD"/>
+        <div [hidden]="password.valid || password.untouched" class="alert">
+          Incorrect password:<br>
+            - length less <b>3</b> or greaten <b>20</b><br>
+            - have special symbols
+        </div>
+    </div>
+    
+    <div>
+        <button [disabled]="yearBirth.invalid || email.invalid || password.invalid" class="btn btn-default" (click)="addUser()">Sign Up</button>        
+    </div>
+</form>

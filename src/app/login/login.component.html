@@ -1,0 +1,21 @@
+<a routerLink="/registration">Sign Up</a>
+<form> 
+    <div>
+        <label>Email addres:</label>
+        <input type="email" name="email" [(ngModel)]="userData.email" #email="ngModel" (change)="validEmail = check('email', userData.email)" required pattern="[a-zA-Z_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}" placeholder="mikeshinoda@lptv.com"/>
+        <div [hidden]="validemail" class="alert">
+          Not found user with this email
+        </div>
+    </div>
+    <div>
+        <label>Password</label>
+        <input type="password" name="password" [(ngModel)]="userData.password" #password="ngModel" (change)="validPass = check('password', userData.email, userData.password)" pattern="[a-zA-Z0-9]{3,20}" placeholder="pa$$w0rD"/>
+        <div [hidden]="validpassword" class="alert">
+          Wrong password
+        </div>
+    </div>
+    <div>
+        <button [disabled]="!validpassword" class="btn btn-default" (click)="login()">Log In</button>        
+    </div>
+</form>
+<a routerLink="/forgotpassword">Forgot password</a>
