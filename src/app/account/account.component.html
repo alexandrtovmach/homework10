@@ -1,2 +1,7 @@
-<h2>WELCOME {{userInfo.firstName}} {{userInfo.lastName}}</h2>
-<div>{{userInfo.email}}</div>
+<h2>{{userInfo.firstName}} {{userInfo.lastName}}<br><span>({{userInfo.email}})</span></h2>
+<nav>
+    <!-- <a routerLink="/timer">Timer</a>
+    <a routerLink="/userstable">User table</a> -->
+    <a routerLink="/login" (click)="logout()">Log Out</a>
+</nav>
+

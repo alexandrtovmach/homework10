@@ -25,7 +25,7 @@ export class RegistrationComponent implements OnInit {
     private router: Router
   ){}
   ngOnInit() {
-    if ((localStorage.length)&&(localStorage.email)) {
+    if ((sessionStorage.length)&&(sessionStorage.getItem('firstName'))) {
       this.router.navigate(['/account']);
     }
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MainService } from '../main.service';
 
+
 export class User{
   firstName: string;
   lastName: string;
@@ -23,7 +24,9 @@ export class AccountComponent implements OnInit {
     private mainService: MainService,
     private router: Router
   ){}
-
+  logout() {
+    sessionStorage.clear()
+  }
   ngOnInit() {
     this.userInfo = this.mainService.parseLocalStorage('get');
   }

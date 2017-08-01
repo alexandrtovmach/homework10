@@ -15,8 +15,8 @@ export class UserLogin {
 })
 export class LoginComponent implements OnInit {
   allUsers;
-  validpassword: boolean = true;
-  validemail: boolean = true;
+  validpassword = {};
+  validemail = {};
   userData: UserLogin = new UserLogin();
   constructor(
     private mainService: MainService,
@@ -24,12 +24,16 @@ export class LoginComponent implements OnInit {
   ){}
 
   ngOnInit() {
+    if ((sessionStorage.length)&&(sessionStorage.getItem('firstName'))) {
+      this.router.navigate(['/account']);
+    }
     this.allUsers = this.mainService.parseLocalStorage('all')
   }
   check(type: string, email: string, password?: string) {
-    return this['valid'+type] = this.mainService.checkValid(this.allUsers, type, email, password)
+    return this['valid'+type] = this.mainService.checkValid(this.allUsers, type, email, password);
   }
   login() {
+    this.mainService.parseLocalStorage('add', this.validpassword);
     this.router.navigate(['/account']);
   }
 

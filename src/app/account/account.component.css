@@ -1,0 +1,9 @@
+h2 > span {
+    color: blueviolet;
+    font-size: 10px;
+    color: cadetblue;
+}
+nav {
+    font-size: 30px;
+    margin: 0  auto;
+}

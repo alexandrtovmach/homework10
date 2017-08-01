@@ -14,7 +14,7 @@ export class ForgotpasswordComponent implements OnInit {
   private question;
   private answer;
   private email: string;
-  private valid: boolean = true;
+  private valid: any = true;
   private pass: boolean = false;
   private correct: boolean = false;
   constructor(
@@ -24,6 +24,9 @@ export class ForgotpasswordComponent implements OnInit {
   ){}
 
   ngOnInit() {
+    if ((sessionStorage.length)&&(sessionStorage.getItem('firstName'))) {
+      this.router.navigate(['/account']);
+    } 
     this.question = this.forgotpService.question()
   }
 
@@ -32,7 +35,11 @@ export class ForgotpasswordComponent implements OnInit {
   }
 
   checkAns() {
-    this.correct = this.forgotpService.answerCheck(this.answer)
+    this.correct = this.forgotpService.answerCheck(this.answer);
+    if (this.correct) {
+      sessionStorage.setItem('showEmail', this.valid.email)
+      sessionStorage.setItem('showPass', this.valid.password)
+    }
   }
 
 }

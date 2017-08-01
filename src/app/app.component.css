@@ -1,0 +1,78 @@
+:host >>> a {    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 10vw;
+    height: 50px;
+    background-color: aquamarine;
+    transition: 1s;
+    color: black;
+    margin: 10px;
+}
+:host >>> a:hover {
+    background-color: aqua;
+}
+:host >>> button {    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10vw;
+    height: 50px;
+    background-color: aquamarine;
+    transition: 1s;
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    border: 0;
+    margin: 10px;
+}
+:host >>> button:disabled {
+    background-color: cadetblue;
+}
+:host >>> button:disabled:hover {
+    background-color: cadetblue;
+}
+:host >>> button:hover {
+    background-color: aqua;
+}
+:host >>> label {    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 5px;
+    width: calc(10vw - 2*5px);
+    background-color: aliceblue;
+    transition: 1s;
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    border: 0;
+    margin: 0 10px;
+}
+:host-context(body)  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+:host >>> h2 {
+    text-align: center;
+}
+:host >>> input.ng-touched.ng-invalid {
+    border:solid red 2px;
+}
+:host >>> input.ng-touched.ng-valid {
+    border:solid green 2px;
+}
+:host >>> .alert {
+    background-color: rgba(250, 0, 0, 0.2);
+    padding: 10px;
+    max-width: calc(10vw - 2*10px - 0.2vw);    
+    max-height: 3vw;
+    margin: 10px;
+    border:solid rgba(250, 0, 0, 0.5) 2px;
+    border-radius: 0.2vw;
+}
